@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "numero-api": "apps/numero-api",
+    "numero-app": "apps/numero-app",
+    "numero-app-e2e": "apps/numero-app-e2e"
+  }
 }

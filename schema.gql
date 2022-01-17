@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""game """
+type Game {
+  id: ID!
+  userId: Float!
+}
+
+"""user """
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+type Query {
+  games: [Game!]!
+  user(id: Float, email: String): User!
+}
