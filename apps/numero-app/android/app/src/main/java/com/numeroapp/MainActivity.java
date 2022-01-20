@@ -1,4 +1,4 @@
-package com.numeroapp;
+package dev.techdebts.numero;
 
 import com.facebook.react.ReactActivity;
 

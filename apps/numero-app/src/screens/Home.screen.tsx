@@ -22,7 +22,8 @@ export const HomeScreen: React.FC = () => {
   console.log(error);
   return (
     <View>
-      <Text>{JSON.stringify(data)}</Text>
+      {/* <Text>{JSON.stringify(data)}</Text> */}
+      <Text>Hello world</Text>
     </View>
   );
 };

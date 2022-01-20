@@ -11,17 +11,31 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id         Int      @id @default(autoincrement())
+  firstName  String?
+  lastName   String?
+  email      String   @unique
+  password   String?
+  provider   String?
+  providerId String?
+  role       Role
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   games Game[]
 }
 
 model Game {
-  id       Int      @id @default(autoincrement())
-  userId   Int
-  playedOn DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  playedOn  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  playedBy User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  USER
 }

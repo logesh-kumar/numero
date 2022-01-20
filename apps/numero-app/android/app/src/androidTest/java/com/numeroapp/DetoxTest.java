@@ -1,36 +1,39 @@
 // Replace "com.example" here and below with your app's package name from the top of MainActivity.java
-package com.numeroapp;
-
-import com.wix.detox.Detox;
-import com.wix.detox.config.DetoxConfig;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+package dev.techdebts.numero;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import com.wix.detox.Detox;
+import com.wix.detox.config.DetoxConfig;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class DetoxTest {
-    // Replace 'MainActivity' with the value of android:name entry in
-    // <activity> in AndroidManifest.xml
-    @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class, false, false);
+  // Replace 'MainActivity' with the value of android:name entry in
+  // <activity> in AndroidManifest.xml
+  @Rule
+  public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+    MainActivity.class,
+    false,
+    false
+  );
 
-    @Test
-    public void runDetoxTests() {
-        // This is optional - in case you've decided to integrate TestButler
-        // See https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#8-test-butler-support-optional
-        // TestButlerProbe.assertReadyIfInstalled();
+  @Test
+  public void runDetoxTests() {
+    // This is optional - in case you've decided to integrate TestButler
+    // See https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#8-test-butler-support-optional
+    // TestButlerProbe.assertReadyIfInstalled();
 
-        DetoxConfig detoxConfig = new DetoxConfig();
-        detoxConfig.idlePolicyConfig.masterTimeoutSec = 90;
-        detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 60;
-        detoxConfig.rnContextLoadTimeoutSec = (com.numeroapp.BuildConfig.DEBUG ? 180 : 60);
+    DetoxConfig detoxConfig = new DetoxConfig();
+    detoxConfig.idlePolicyConfig.masterTimeoutSec = 90;
+    detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 60;
+    detoxConfig.rnContextLoadTimeoutSec =
+      (dev.techdebts.numero.BuildConfig.DEBUG ? 180 : 60);
 
-        Detox.runTests(mActivityRule, detoxConfig);
-    }
+    Detox.runTests(mActivityRule, detoxConfig);
+  }
 }

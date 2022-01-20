@@ -3,20 +3,22 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-native": "*",
-    "@testing-library/react-native": "*",
-    "react": "*",
-    "react-native": "*",
-    "react-native-svg": "*",
     "@react-native-async-storage/async-storage": "*",
     "@react-native-community/netinfo": "*",
     "@react-navigation/bottom-tabs": "*",
     "@react-navigation/native": "*",
     "@react-navigation/native-stack": "*",
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*",
     "@urql/exchange-graphcache": "*",
     "@urql/storage-rn": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-auth0": "*",
+    "@react-native-firebase/app": "*",
     "react-native-safe-area-context": "*",
     "react-native-screens": "*",
+    "react-native-svg": "*",
     "urql": "*"
   }
 }

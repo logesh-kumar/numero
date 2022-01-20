@@ -7,4 +7,5 @@ export type BottomTabParamList = {
 
 export type RootStackParamList = {
   BottomTabs: NavigatorScreenParams<BottomTabParamList>;
+  Signin: undefined;
 };
