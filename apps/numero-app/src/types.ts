@@ -9,3 +9,8 @@ export type RootStackParamList = {
   BottomTabs: NavigatorScreenParams<BottomTabParamList>;
   Signin: undefined;
 };
+
+export type AuthStackParamList = {
+  Signin: undefined;
+  Register: undefined;
+};

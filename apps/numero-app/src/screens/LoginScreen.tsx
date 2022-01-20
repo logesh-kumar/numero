@@ -1,48 +1,26 @@
-import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
-import Auth0 from 'react-native-auth0';
-import { AUTH0_CONFIG } from '../auth0-configuration';
-
-const auth0 = new Auth0(AUTH0_CONFIG);
+import React, { useCallback, useContext, useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AuthContext } from '../app/AuthProvider';
 
 export const LoginScreen: React.FC = () => {
-  const [accessToken, setAccessToken] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
 
-  const onLogin = () => {
-    auth0.webAuth
-      .authorize({
-        scope: 'openid profile email',
-      })
-      .then((credentials) => {
-        console.log({ credentials });
-        Alert.alert('AccessToken: ' + credentials.accessToken);
-        setAccessToken(credentials.accessToken);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const onLogout = () => {
-    auth0.webAuth
-      .clearSession({})
-      .then((success) => {
-        Alert.alert('Logged out!');
-        setAccessToken(null);
-      })
-      .catch((error) => {
-        console.log('Log out cancelled');
-      });
-  };
-
-  const loggedIn = accessToken !== null;
+  const handleLogin = useCallback(() => {
+    login();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}> Auth0Sample - Login </Text>
-      <Text>You are{loggedIn ? ' ' : ' not '}logged in. </Text>
-      <Button
-        onPress={loggedIn ? onLogout : onLogin}
-        title={loggedIn ? 'Log Out' : 'Log In'}
+      <Text style={styles.header}>Login</Text>
+      <TextInput style={styles.input} value={email} onChangeText={setEmail} />
+      <TextInput
+        style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
+      <Button onPress={handleLogin} title={'Log In'} />
     </View>
   );
 };
@@ -58,5 +36,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  input: {
+    borderColor: '#333',
+    borderWidth: 1,
+    width: 300,
+    height: 50,
   },
 });

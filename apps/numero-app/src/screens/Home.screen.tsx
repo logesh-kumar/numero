@@ -12,7 +12,11 @@ const GAMES = gql`
   query games {
     games {
       id
-      userId
+      createdAt
+      user {
+        id
+        email
+      }
     }
   }
 `;
@@ -21,9 +25,20 @@ export const HomeScreen: React.FC = () => {
   const [{ data, fetching, error }] = useQuery({ query: GAMES });
   console.log(error);
   return (
-    <View>
-      {/* <Text>{JSON.stringify(data)}</Text> */}
-      <Text>Hello world</Text>
+    <View style={styles.container}>
+      {data && <Text style={styles.text}>{JSON.stringify(data)}</Text>}
+      <Text style={styles.text}>Hello world...</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  text: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

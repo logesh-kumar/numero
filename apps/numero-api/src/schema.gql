@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Auth {
+  """JWT access token"""
+  accessToken: String!
+
+  """JWT refresh token"""
+  refreshToken: String!
+  user: User!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -18,8 +27,34 @@ type Game {
   user: User!
 }
 
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  login(data: LoginInput!): Auth!
+  refreshToken: Token!
+  signup(data: SignupInput!): Auth!
+}
+
 type Query {
   games: [Game!]!
+}
+
+input SignupInput {
+  email: String!
+  firstName: String
+  lastName: String
+  password: String!
+}
+
+type Token {
+  """JWT access token"""
+  accessToken: String!
+
+  """JWT refresh token"""
+  refreshToken: String!
 }
 
 type User {

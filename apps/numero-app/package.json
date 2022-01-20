@@ -18,7 +18,9 @@
     "@react-native-firebase/app": "*",
     "react-native-safe-area-context": "*",
     "react-native-screens": "*",
+    "react-native-vector-icons": "*",
     "react-native-svg": "*",
-    "urql": "*"
+    "urql": "*",
+    "@urql/exchange-auth": "*"
   }
 }

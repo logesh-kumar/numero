@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './Home.screen';
 import { BottomTabParamList } from '../types';
 import { LeaderboardScreen } from './Leaderboard.screen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const BottomTabs = createBottomTabNavigator<BottomTabParamList>();
 
